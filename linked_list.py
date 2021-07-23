@@ -4,6 +4,9 @@ Using Self Referential Objects (nodes)
 """
 
 
+from typing import Optional
+
+
 class Node:
     """
     An object for storing a single node of a linked list.
@@ -46,7 +49,7 @@ class LinkedList:
 
         return count
 
-    def add(self, data):
+    def add(self, data: int):
         """
         Adds a new Node containing data at the head of the list
         Takes O(1) time
@@ -55,7 +58,7 @@ class LinkedList:
         new_node.next_node = self.head
         self.head = new_node
 
-    def search(self, key):
+    def search(self, key: int) -> Optional[Node]:
         """
         Search for the first node containing data that matches the key
         Return the node or 'None' if not found
@@ -99,7 +102,7 @@ class LinkedList:
             prev_node.next_node = new
             new.next_node = next_node
 
-    def remove(self, key):
+    def remove(self, key: int) -> Node:
         """
         Removes Node containing data that matches the key
         Returns the node or None if key doesn't exist
