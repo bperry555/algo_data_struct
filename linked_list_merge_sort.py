@@ -8,6 +8,9 @@ def merge_sort(linked_list):
     - Repeatedly merge the sublists to produce sorted sublists until one remains
 
     Returns a sorted linked list
+
+    Takes O(n log n) time
+    Takes O(n) space
     """
 
     if linked_list.size() == 1:
@@ -25,6 +28,7 @@ def merge_sort(linked_list):
 def split(linked_list):
     """
     Divide the unsorted linked list at midpoint into sublists
+    Takes O(log n) time
     """
 
     if linked_list is None or linked_list.head is None:
@@ -50,6 +54,8 @@ def merge(left, right):
     """
     Merges two linked lists, sorting by data in nodes
     Returns a new, merged list
+    Takes O(n) space
+    Runs in O(n) time
     """
 
     merged = LinkedList()
@@ -83,17 +89,17 @@ def merge(left, right):
             left_data = left_head.data
             right_data = right_head.data
             # If data on left is less than right, set current to left node
-        if left_data < right_data:
-            current.next_node = left_head
-            # Move left head to next node
-            left_head = left_head.next_node
-        #  If data on left is greater than right, set current to right node
-        else:
-            current.next_node = right_head
-            #  Move right head to next node
-            right_head = right_head.next_node
-    #  MOve current to next node
-    current = current.next_node
+            if left_data < right_data:
+                current.next_node = left_head
+                # Move left head to next node
+                left_head = left_head.next_node
+            #  If data on left is greater than right, set current to right node
+            else:
+                current.next_node = right_head
+                #  Move right head to next node
+                right_head = right_head.next_node
+        #  MOve current to next node
+        current = current.next_node
 
     #  Discard fake head and set first merged node as head
     head = merged.head.next_node
